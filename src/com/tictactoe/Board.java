@@ -100,17 +100,22 @@ public class Board {
 	        	
 	        	System.out.println("Hey HUMAN..!! Enter the cell");
 	        	moveIndex = in.nextInt() - 1;
-	        	x = moves[moveIndex] / Constants.SIDE;
-	            y = moves[moveIndex] % Constants.SIDE;
-	            if(board[x][y] == ' '){
-	            	makeMove(Constants.HUMAN_MOVE,x,y);
-	            }
-	            else{
-	            	continue;
-	            }
-	         	System.out.println("HUMAN has entered a " + Constants.HUMAN_MOVE +" in " + (moves[moveIndex]+1));
-	            displayBoard();
-	            player = Constants.COMPUTER_PLAYER;
+	        	if(moveIndex > 0 && moveIndex < 9){
+	        		x = moves[moveIndex] / Constants.SIDE;
+		            y = moves[moveIndex] % Constants.SIDE;
+		            if(board[x][y] == ' '){
+		            	makeMove(Constants.HUMAN_MOVE,x,y);
+		            }
+		            else{
+		            	continue;
+		            }
+		         	System.out.println("HUMAN has entered a " + Constants.HUMAN_MOVE +" in " + (moves[moveIndex]+1));
+		            displayBoard();
+		            player = Constants.COMPUTER_PLAYER;
+	        	}else{
+	        		System.out.println("Invalid cell");
+	        		
+	        	}
 	        }
 		}
 		if (gameOver() == false && moveIndex == Constants.SIDE * Constants.SIDE)
